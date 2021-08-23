@@ -1,0 +1,61 @@
+{
+  "name": "faviconize",
+  "version": "1.0.0",
+  "description": "Library and CLI for generating favicons in all formats.",
+  "author": {
+    "name": "Igor Klepacki",
+    "email": "neg4n@icloud.com",
+    "url": "https://neg4n.dev/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neg4n/faviconize"
+  },
+  "keywords": [
+    "favicon",
+    "image-processing",
+    "web-icon",
+    "webdev",
+    "web-development",
+    "cli",
+    "icon-cli"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/neg4n/faviconize/issues"
+  },
+  "homepage": "https://github.com/neg4n/faviconize/issues/#readme",
+  "files": [
+    "dist"
+  ],
+  "bin": "dist/index.js",
+  "scripts": {
+    "prepublishOnly": "npm run build",
+    "prebuild": "rimraf dist",
+    "build": "tsc",
+    "start": "node dist/faviconize.js",
+    "start:dev": "ts-node src/index.ts"
+  },
+  "devDependencies": {
+    "@types/inquirer": "^7.3.3",
+    "@types/node": "^16.4.13",
+    "@types/sharp": "^0.28.5",
+    "prettier": "^2.3.2",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.2.1",
+    "typescript": "^4.3.5"
+  },
+  "dependencies": {
+    "chalk": "^2.4.2",
+    "inquirer": "^8.1.2",
+    "sharp": "^0.29.0"
+  },
+  "prettier": {
+    "printWidth": 90,
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "all"
+  }
+}
