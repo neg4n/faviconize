@@ -6,7 +6,7 @@ import chalk from 'chalk'
 import * as sharp from 'sharp'
 import * as inquirer from 'inquirer'
 
-type IconType = 'apple-touch-icon'
+type IconType = 'icon' | 'msapplication-TileImage' | 'apple-touch-icon'
 
 const ICON_TYPE_SIZE = {
   icon: [196, 160, 96, 32, 16],
@@ -14,6 +14,12 @@ const ICON_TYPE_SIZE = {
   'apple-touch-icon': [57, 144, 72, 144, 60, 120, 76, 152],
 }
 
+/**
+ * Generate favicons in various formats from image.
+ * @param  {string} inputFilePath File from which icons will be generated.
+ * @param  {IconType | IconType[]} outputTypes Icon types to be generated. Can be a single type or an array of types. null means all types.
+ * @param  {string} outputDirectory Directory where to save icons. If not specified it will be `icons/`
+ */
 export async function faviconize(
   inputFilePath: string,
   outputTypes?: IconType | IconType[],
@@ -70,12 +76,17 @@ export async function faviconize(
 async function cli() {
   const args = process.argv.slice(2, process.argv.length)
   if (args.length !== 1) {
-    console.log(`
-    ${chalk.bgBlack(chalk.bold(chalk.red(` CLI Error: Incorrect number of arguments `)))}
-    ${chalk.white(
-      `${chalk.greenBright('Proper usage:')} faviconize ${chalk.gray('<path-to-image>')}`,
-    )}
-    `)
+    const { bgBlack, bold, red, underline, gray, white } = chalk
+    console.log()
+    console.log(bgBlack(bold(red(` CLI Error: Incorrect number of arguments `))))
+    console.log(`${gray('Usage:')} faviconize <path-to-image>`)
+    console.log()
+    console.log(
+      `Find out more at ${white(
+        underline('https://github.com/neg4n/faviconize#readme'),
+      )}`,
+    )
+    console.log()
     process.exit(1)
   }
 
