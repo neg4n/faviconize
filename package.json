@@ -37,8 +37,8 @@
     "start:dev": "ts-node src/index.ts"
   },
   "devDependencies": {
-    "@types/inquirer": "^7.3.3",
     "@types/node": "^16.4.13",
+    "@types/prompts": "^2.0.14",
     "@types/sharp": "^0.28.5",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
@@ -47,7 +47,7 @@
   },
   "dependencies": {
     "ansi-colors": "^4.1.1",
-    "inquirer": "^8.1.2",
+    "prompts": "^2.4.1",
     "sharp": "^0.29.0"
   },
   "prettier": {

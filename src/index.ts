@@ -4,9 +4,11 @@ import * as path from 'path'
 import { access, mkdir } from 'fs/promises'
 import * as ansiColors from 'ansi-colors'
 import * as sharp from 'sharp'
-import * as inquirer from 'inquirer'
+import { prompt } from 'prompts'
 
 type IconType = 'icon' | 'msapplication-TileImage' | 'apple-touch-icon'
+
+const DEFAULT_OUTPUT_DIRECTORY = 'icons/'
 
 const ICON_TYPE_SIZE = {
   icon: [196, 160, 96, 32, 16],
@@ -65,7 +67,7 @@ export async function faviconize(
 
   async function createOrUseOutputPath() {
     const outputPath = path.resolve(
-      path.join(currentDirectory, outputDirectory || 'icons/'),
+      path.join(currentDirectory, outputDirectory || DEFAULT_OUTPUT_DIRECTORY),
     )
 
     try {
@@ -105,19 +107,24 @@ async function cli() {
     outputDirectory: string
   }> {
     try {
-      return await inquirer.prompt([
+      return await prompt([
         {
           name: 'outputTypes',
-          message: 'Choose output icon types:',
-          type: 'checkbox',
-          default: Object.keys(ICON_TYPE_SIZE),
-          choices: Object.keys(ICON_TYPE_SIZE),
+          message: 'Choose output icon types',
+          hint: '(Use <space> to toggle, <return> to submit, <a> to toggle everything)',
+          instructions: false,
+          type: 'multiselect',
+          choices: Object.keys(ICON_TYPE_SIZE).map((outputType) => ({
+            title: outputType,
+            value: outputType,
+            selected: true,
+          })),
         },
         {
           name: 'outputDirectory',
-          message: 'Choose output directory:',
-          type: 'input',
-          default: 'icons/',
+          message: 'Choose output directory',
+          type: 'text',
+          initial: DEFAULT_OUTPUT_DIRECTORY,
         },
       ])
     } catch (error) {
