@@ -29,17 +29,22 @@ export async function faviconize(
   const currentDirectory = path.join(process.cwd())
   const outputPath = await createOrUseOutputPath()
 
-  for (const [type, edgeSizes] of Object.entries(ICON_TYPE_SIZE)) {
+  for (const [type, edges] of Object.entries(ICON_TYPE_SIZE)) {
     if (types.includes(type)) {
-      for (const edge of edgeSizes) {
-        const size = [edge, edge]
+      try {
+        await Promise.all(
+          edges.map((edge) => {
+            const size = [edge, edge]
+            const inputPath = path.resolve(path.join(currentDirectory, inputFilePath))
+            const outputFile = path.join(outputPath, `${type}-${size.join('x')}.png`)
 
-        const inputPath = path.resolve(path.join(currentDirectory, inputFilePath))
-        const outputFile = path.join(outputPath, `${type}-${size.join('x')}.png`)
-
-        sharp(inputPath)
-          .resize(...size)
-          .toFile(outputFile)
+            return sharp(inputPath)
+              .resize(...size)
+              .toFile(outputFile)
+          }),
+        )
+      } catch (error) {
+        console.error(chalk.red(error))
       }
     }
   }
@@ -78,7 +83,7 @@ async function cli() {
   if (args.length !== 1) {
     const { bgBlack, bold, red, underline, gray, white } = chalk
     console.log()
-    console.log(bgBlack(bold(red(` CLI Error: Incorrect number of arguments `))))
+    console.log(bgBlack(bold(red(`CLI Error: Incorrect number of arguments`))))
     console.log(`${gray('Usage:')} faviconize <path-to-image>`)
     console.log()
     console.log(
@@ -93,7 +98,7 @@ async function cli() {
   const [inputPath] = args
   const { outputTypes, outputDirectory } = await cliInterface()
 
-  faviconize(inputPath, outputTypes, outputDirectory)
+  await faviconize(inputPath, outputTypes, outputDirectory)
 
   async function cliInterface(): Promise<{
     outputTypes: IconType[]
