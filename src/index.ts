@@ -2,7 +2,7 @@
 
 import * as path from 'path'
 import { access, mkdir } from 'fs/promises'
-import chalk from 'chalk'
+import * as ansiColors from 'ansi-colors'
 import * as sharp from 'sharp'
 import * as inquirer from 'inquirer'
 
@@ -44,7 +44,7 @@ export async function faviconize(
           }),
         )
       } catch (error) {
-        console.error(chalk.red(error))
+        console.error(error)
       }
     }
   }
@@ -81,7 +81,7 @@ export async function faviconize(
 async function cli() {
   const args = process.argv.slice(2, process.argv.length)
   if (args.length !== 1) {
-    const { bgBlack, bold, red, underline, gray, white } = chalk
+    const { bgBlack, bold, red, underline, gray, white } = ansiColors
     console.log()
     console.log(bgBlack(bold(red(`CLI Error: Incorrect number of arguments`))))
     console.log(`${gray('Usage:')} faviconize <path-to-image>`)
