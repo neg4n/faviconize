@@ -1,3 +1,4 @@
 dist/
 icons/
 node_modules/
+.vscode

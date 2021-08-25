@@ -1,5 +1,5 @@
 <div align="center">
-  <h2>faviconize</h2>
+  <h1>faviconize</h1>
   <h4>Library and CLI for generating favicons in all formats</h4>
   <br />
 </div>
