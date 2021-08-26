@@ -1,0 +1,12 @@
+{
+  "name": "faviconize",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "sharp": "^0.29.0"
+  },
+  "devDependencies": {
+    "@types/sharp": "^0.28.5"
+  }
+}
