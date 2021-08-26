@@ -42,6 +42,7 @@
     "@types/prompts": "^2.0.14",
     "@types/sharp": "^0.28.5",
     "jest": "^27.0.6",
+    "lerna": "^4.0.0",
     "prettier": "^2.3.2",
     "rimraf": "^3.0.2",
     "ts-jest": "^27.0.5",
@@ -60,5 +61,9 @@
     "semi": false,
     "singleQuote": true,
     "trailingComma": "all"
-  }
+  },
+  "private": true,
+  "workspaces": [
+    "packages/*"
+  ]
 }
