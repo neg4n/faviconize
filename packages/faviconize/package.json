@@ -3,6 +3,15 @@
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "prepublish": "yarn build",
+    "test": "jest",
+    "test:watch": "jest --watchAll",
+    "test:verbose": "jest --verbose",
+    "test:coverage": "jest --coverage"
+  },
   "dependencies": {
     "sharp": "^0.29.0"
   },
