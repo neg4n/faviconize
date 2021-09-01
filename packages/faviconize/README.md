@@ -12,19 +12,7 @@ RFG is really good project but sadly it works only online, its [API](https://git
 
 ## Getting started
 
-**faviconize** repository is a CLI application and a library source at once.
-
-### Installing CLI globally
-
-```shell
-npm i faviconize-cli -g
-```
-
-or if you want limit scope to the project
-
-```shell
-npm i faviconize-cli -D
-```
+**faviconize** repository contains both CLI application and library source.
 
 ### Installing the library
 
@@ -35,14 +23,15 @@ npm i faviconize-cli -S
 
 _You will probably want to install it as devDependency :D_
 
+### Installing CLI globally
+
+_Work in progress_
+
 ## Usage
 
 ### Command line
 
-```
-faviconize <image-to-resize>
-```
-then follow self-explanatory terminal user interface.
+_Work in progress_
 
 ### Code
 
@@ -52,23 +41,13 @@ import { faviconize } from 'faviconize'
 async function run() {
   await faviconize('path/to/image.jpg')
   // ... or with custom output icon types
-  await faviconize('path/to/other-image.jpg', [
-    'apple-touch-icon',
-    'msapplication-TileImage',
-  ])
+  await faviconize('path/to/other-image.jpg', ['apple-touch-icon', 'msapplication-TileImage'])
   // ... or with all icon types and custom output directory
   await faviconize('path/to/another-image.jpg', null, '.')
 }
 
 run()
 ```
-
-## TODO
-
-- [ ] `example/` project
-- [ ] Documentation
-- [ ] Configuration
-- [ ] Tests
 
 ## Ending speech
 
