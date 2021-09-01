@@ -1,14 +1,17 @@
 {
   "name": "faviconize",
   "version": "1.0.2-alpha.0",
-  "main": "index.js",
+  "main": "dist/index.js",
   "license": "MIT",
-  "types": "index.d.ts",
+  "types": "dist/index.d.ts",
   "author": {
     "name": "Igor Klepacki",
     "email": "neg4n@icloud.com",
     "url": "https://neg4n.dev/"
   },
+  "files": [
+    "dist"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/neg4n/faviconize"
@@ -29,6 +32,7 @@
   "scripts": {
     "build": "tsc",
     "prepublish": "yarn build",
+    "prepack": "node prepack.js",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:verbose": "jest --verbose",
