@@ -12,18 +12,25 @@ RFG is really good project but sadly it works only online, its [API](https://git
 
 ## Getting started
 
-**faviconize** is a CLI application and a library at once.
+**faviconize** repository is a CLI application and a library source at once.
 
-Installing globally
+### Installing CLI globally
 
 ```shell
-npm i faviconize -g
+npm i faviconize-cli -g
 ```
 
 or if you want limit scope to the project
 
 ```shell
-npm i faviconize -D
+npm i faviconize-cli -D
+```
+
+### Installing the library
+
+```shell
+npm i faviconize-cli -S
+
 ```
 
 _You will probably want to install it as devDependency :D_

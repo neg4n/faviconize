@@ -3,7 +3,29 @@
   "version": "1.0.1",
   "main": "index.js",
   "license": "MIT",
-  "types": "dist/index.d.ts",
+  "types": "index.d.ts",
+  "author": {
+    "name": "Igor Klepacki",
+    "email": "neg4n@icloud.com",
+    "url": "https://neg4n.dev/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neg4n/faviconize"
+  },
+  "keywords": [
+    "favicon",
+    "image-processing",
+    "web-icon",
+    "webdev",
+    "web-development",
+    "cli",
+    "icon-cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/neg4n/faviconize/issues"
+  },
+  "homepage": "https://github.com/neg4n/faviconize/#readme",
   "scripts": {
     "build": "tsc",
     "prepublish": "yarn build",
@@ -17,5 +39,6 @@
   },
   "devDependencies": {
     "@types/sharp": "^0.28.5"
-  }
+  },
+  "gitHead": "f492b9d5ebc17ca110da5da98537827db332dd7f"
 }
