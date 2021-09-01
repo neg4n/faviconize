@@ -3,11 +3,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {
-    "clean": "rimraf dist",
-    "clean:build": "yarn clean && lerna run --stream build",
-    "release": "yarn clean:build && lerna publish -y --contents dist from-package."
-  },
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.2",

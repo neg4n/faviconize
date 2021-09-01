@@ -1,5 +1,5 @@
 import * as path from 'path'
-import fs from 'fs/promises'
+import * as fs from 'fs/promises'
 import { vol as memoryFsVolume } from 'memfs'
 
 import { IconType, InputFileError } from '../src/types'

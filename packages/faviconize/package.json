@@ -31,8 +31,8 @@
   "homepage": "https://github.com/neg4n/faviconize/#readme",
   "scripts": {
     "build": "tsc",
-    "prepublish": "yarn build",
-    "prepack": "node prepack.js",
+    "clean": "rimraf dist",
+    "prepublish": "yarn clean && yarn build",
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:verbose": "jest --verbose",
