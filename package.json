@@ -3,6 +3,9 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "readme": "node extract-readme.js"
+  },
   "devDependencies": {
     "@types/jest": "^27.0.1",
     "@types/node": "^16.7.2",
