@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "rimraf dist",
     "clean:build": "yarn clean && lerna run --stream build",
-    "publish": "yarn clean:build && lerna publish -y --contents dist from-package."
+    "release": "yarn clean:build && lerna publish -y --contents dist from-package."
   },
   "devDependencies": {
     "@types/jest": "^27.0.1",
