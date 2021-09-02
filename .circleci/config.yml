@@ -12,11 +12,11 @@ jobs:
       - node/install-packages:
           pkg-manager: yarn
       - run:
-          name: Run tests and create coverage
-          command: yarn lerna run test:coverage
+          name: Run tests
+          command: lerna run test
       - run:
           name: Upload coverage to codecov
-          command: yarn lerna exec -- yarn codecov -F \$LERNA_PACKAGE_NAME --token="${CODECOV_TOKEN}"
+          command: lerna exec -- codecov -t ${CODECOV_TOKEN} -F \$LERNA_PACKAGE_NAME 
 
 workflows:
   build-test-coverage:
