@@ -13,7 +13,7 @@ jobs:
           pkg-manager: yarn
       - run:
           name: Run tests
-          command: lerna run test
+          command: ./node_modules/.bin/lerna run test
       - run:
           name: Upload coverage to codecov
           command: ./node_modules/.bin/lerna exec -- codecov -t ${CODECOV_TOKEN} -F \$LERNA_PACKAGE_NAME 
