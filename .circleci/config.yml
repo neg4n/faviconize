@@ -16,7 +16,7 @@ jobs:
           command: ./node_modules/.bin/lerna run test
       - run:
           name: Upload coverage to codecov
-          command: ./node_modules/.bin/lerna exec -- codecov -t ${CODECOV_TOKEN} -F \$LERNA_PACKAGE_NAME 
+          command: ./node_modules/.bin/lerna exec -- yarn codecov -t ${CODECOV_TOKEN} -F \$LERNA_PACKAGE_NAME 
 
 workflows:
   build-test-coverage:
