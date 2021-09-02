@@ -1,5 +1,5 @@
 import * as path from 'path'
-import * as fs from 'fs/promises'
+import fs from 'fs/promises'
 
 import { defaultOutputDirectory, iconTypesAndEdgesMap } from './constants'
 import { IconType, InputFileError } from './types'
