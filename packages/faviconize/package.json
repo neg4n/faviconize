@@ -36,7 +36,7 @@
     "test": "jest",
     "test:watch": "jest --watchAll",
     "test:verbose": "jest --verbose",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "rimraf coverage && jest --coverage"
   },
   "dependencies": {
     "sharp": "^0.29.0"
