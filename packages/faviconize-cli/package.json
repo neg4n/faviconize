@@ -1,6 +1,6 @@
 {
   "name": "faviconize-cli",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "main": "dist/index.js",
   "bin": {
     "faviconize": "dist/index.js"
