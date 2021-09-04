@@ -1,0 +1,57 @@
+{
+  "name": "faviconize-cli",
+  "version": "1.0.0",
+  "main": "dist/index.js",
+  "bin": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "license": "MIT",
+  "author": {
+    "name": "Igor Klepacki",
+    "email": "neg4n@icloud.com",
+    "url": "https://neg4n.dev/"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neg4n/faviconize"
+  },
+  "keywords": [
+    "favicon",
+    "image-processing",
+    "web-icon",
+    "webdev",
+    "web-development",
+    "cli",
+    "icon-cli"
+  ],
+  "bugs": {
+    "url": "https://github.com/neg4n/faviconize/issues"
+  },
+  "homepage": "https://github.com/neg4n/faviconize/#readme",
+  "scripts": {
+    "build": "babel src -d dist/ --extensions .ts,.tsx",
+    "clean": "rimraf dist",
+    "prepublish": "yarn clean && yarn build"
+  },
+  "dependencies": {
+    "ansi-colors": "^4.1.1",
+    "faviconize": "^1.0.2",
+    "first-run": "^2.0.0",
+    "gradient-string": "^1.2.0",
+    "ink": "^3.0.9",
+    "ink-text-input": "^4.0.1",
+    "react": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.15.4",
+    "@babel/core": "^7.15.4",
+    "@babel/preset-env": "^7.15.4",
+    "@babel/preset-react": "^7.14.5",
+    "@babel/preset-typescript": "^7.15.0",
+    "@types/gradient-string": "^1.1.2",
+    "@types/prompts": "^2.0.14",
+    "@types/react": "^17.0.19"
+  }
+}
