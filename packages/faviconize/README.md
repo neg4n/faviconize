@@ -4,7 +4,7 @@ Library and CLI for generating favicons in all formats
 
 ## Motivation
 
-I _(neg4n)_ wanted to create simpler and more intuitive replacement
+I wanted to create simpler and more intuitive replacement
 for existing project with the same purpose - [Real Favicon Generator](https://realfavicongenerator.net).
 RFG is really good project but sadly it works only online, its [API](https://github.com/RealFaviconGenerator/rfg-api) for Node.js makes HTTP requests under the hood instead of working locally and whole generator seems a little bit overcomplicated for me, personally.
 
