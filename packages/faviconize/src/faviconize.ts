@@ -1,5 +1,5 @@
 import * as path from 'path'
-import * as sharp from 'sharp'
+import sharp from 'sharp'
 
 import { iconTypesAndEdgesMap } from './constants'
 import { normalizeOutputTypes, resolveAndCreateOrUseOutputPath, resolveAndCheckInputFilePath } from './helpers'
