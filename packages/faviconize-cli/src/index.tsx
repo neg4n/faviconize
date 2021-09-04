@@ -16,7 +16,6 @@ import {
 } from './context/completed-steps'
 import { Label } from './components/Label'
 
-firstRun.clear()
 const isFirstRun = firstRun()
 
 function Cli() {
