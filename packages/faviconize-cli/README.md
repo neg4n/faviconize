@@ -28,24 +28,25 @@ import { faviconize } from 'faviconize'
 async function run() {
   await faviconize('path/to/image.jpg')
   // ... or with custom output icon types
-  await faviconize('path/to/other-image.jpg', ['apple-touch-icon', 'msapplication-TileImage']) 
+  await faviconize('path/to/other-image.jpg', ['apple-touch-icon', 'msapplication-TileImage'])
   // ... or with all icon types and custom output directory
-  await faviconize('path/to/another-image.jpg', null, '.') 
+  await faviconize('path/to/another-image.jpg', null, '.')
 }
 
 run()
 ```
 
-## CLI
+## CLI &middot; [![version](https://badgen.net/npm/v/faviconize-cli)](https://www.npmjs.com/package/faviconize-cli)
 
 ### Installing
 
-_Work in progress_
+```shell
+npm i faviconize-cli -g
+```
 
 ### Usage
 
-_Work in progress_
-
+Run `faviconize <path-to-icon>` in your terminal
 
 ## Ending speech
 
