@@ -2,7 +2,9 @@
   "name": "faviconize-cli",
   "version": "1.1.0",
   "main": "dist/index.js",
-  "bin": "dist/index.js",
+  "bin": {
+    "faviconize": "dist/index.js"
+  },
   "types": "dist/index.d.ts",
   "license": "MIT",
   "author": {

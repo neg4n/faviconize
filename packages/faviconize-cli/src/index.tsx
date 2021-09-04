@@ -1,4 +1,4 @@
-#!/bin/node/
+#!/usr/bin/env node
 
 import React, { useEffect, useState } from 'react'
 import firstRun from 'first-run'
@@ -53,7 +53,9 @@ function Cli() {
             <Text>All contributions are welcome.</Text>
           </Box>
           <Box marginTop={1}>
-            <Text color="blackBright" italic>NOTE: You won't see this message next time</Text>
+            <Text color="blackBright" italic>
+              NOTE: You won't see this message next time
+            </Text>
           </Box>
         </Box>
       )}
