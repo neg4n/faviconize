@@ -13,35 +13,36 @@ describe(normalizeOutputTypes, () => {
     expect(() => normalizeOutputTypes([])).toThrow()
   })
 
-  it('should return an default icon output types if no output types or null are provided', () => {
+  it('should return a set with default icon output types if no output types or null is provided', () => {
     const outputTypes = normalizeOutputTypes(null)
-    const defaultIconTypes = Object.keys(iconTypesAndEdgesMap) as IconType[]
+    const defaultIconTypes = new Set(Object.keys(iconTypesAndEdgesMap) as Array<IconType>)
 
     expect(outputTypes).toStrictEqual(defaultIconTypes)
   })
 
-  it('should return an array with a single icon output type', () => {
+  it('should return a set with a single icon output type', () => {
     const outputTypes = normalizeOutputTypes(['icon'])
 
-    expect(outputTypes).toStrictEqual<IconType[]>(['icon'])
+    expect(outputTypes).toStrictEqual<Set<IconType>>(new Set(['icon']))
   })
 
-  it('should return an array with multiple icon output types', () => {
+  it('should return a set with multiple icon output types', () => {
     const outputTypes = normalizeOutputTypes(['icon', 'apple-touch-icon'])
 
-    expect(outputTypes).toStrictEqual<IconType[]>(['icon', 'apple-touch-icon'])
+    expect(outputTypes).toStrictEqual<Set<IconType>>(new Set(['icon', 'apple-touch-icon']))
   })
 
-  it('should return an array with no duplicates if there are any provided', () => {
+  // Do we need this?
+  it('should return a set with no duplicates if there are any provided', () => {
     const outputTypes = normalizeOutputTypes(['icon', 'apple-touch-icon', 'apple-touch-icon'])
 
-    expect(outputTypes).toStrictEqual<IconType[]>(['icon', 'apple-touch-icon'])
+    expect(outputTypes).toStrictEqual<Set<IconType>>(new Set(['icon', 'apple-touch-icon']))
   })
 
-  it('should return an array with one item if single icon type is provided', () => {
+  it('should return a set with one item if single icon type is provided', () => {
     const outputTypes = normalizeOutputTypes('icon')
 
-    expect(outputTypes).toStrictEqual<IconType[]>(['icon'])
+    expect(outputTypes).toStrictEqual<Set<IconType>>(new Set(['icon']))
   })
 })
 

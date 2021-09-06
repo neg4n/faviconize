@@ -4,18 +4,18 @@ import fs from 'fs/promises'
 import { defaultOutputDirectory, iconTypesAndEdgesMap } from './constants'
 import { IconType, InputFileError } from './types'
 
-export function normalizeOutputTypes(outputTypes: IconType | IconType[]): IconType[] {
+export function normalizeOutputTypes(outputTypes: IconType | Array<IconType>): Set<IconType> {
   if (outputTypes) {
     if (outputTypes instanceof Array) {
       if (outputTypes.length === 0) {
         throw new Error('Output types must be an array of at least one element')
       }
-      return outputTypes.filter((type, index, original) => original.indexOf(type) === index)
+      return new Set(outputTypes)
     } else {
-      return [outputTypes]
+      return new Set([outputTypes])
     }
   } else {
-    return Object.keys(iconTypesAndEdgesMap) as IconType[]
+    return new Set(Object.keys(iconTypesAndEdgesMap) as Array<IconType>)
   }
 }
 

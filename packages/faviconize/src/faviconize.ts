@@ -11,13 +11,17 @@ import { IconType } from './types'
  * @param  {IconType | IconType[]} outputTypes Icon types to be generated. Can be a single type or an array of types. null means all types.
  * @param  {string} outputDirectoryPath Directory where to save icons. If not specified it will be `icons/`
  */
-export async function faviconize(imageInput: string | Buffer, outputTypes?: IconType | IconType[], outputDirectoryPath?: string) {
+export async function faviconize(
+  imageInput: string | Buffer,
+  outputTypes?: IconType | Array<IconType>,
+  outputDirectoryPath?: string,
+) {
   const resolvedImageInput = Buffer.isBuffer(imageInput) ? imageInput : await resolveAndCheckInputFilePath(imageInput)
   const normalizedOutputTypes = normalizeOutputTypes(outputTypes)
   const resolvedOutputPath = await resolveAndCreateOrUseOutputPath(outputDirectoryPath)
 
   for (const [type, edges] of Object.entries(iconTypesAndEdgesMap)) {
-    if (normalizedOutputTypes.includes(type as IconType)) {
+    if (normalizedOutputTypes.has(type as IconType)) {
       try {
         await Promise.all(
           edges.map((edge) => {
