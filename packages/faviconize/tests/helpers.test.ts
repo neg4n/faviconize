@@ -3,7 +3,13 @@ import fs from 'fs/promises'
 import { vol as memoryFsVolume } from 'memfs'
 
 import { IconType, InputFileError } from '../src/types'
-import { resolveAndCreateOrUseOutputPath, normalizeOutputTypes, resolveAndCheckInputFilePath } from '../src/helpers'
+import {
+  resolveAndCreateOrUseOutputPath,
+  normalizeOutputTypes,
+  resolveAndCheckInputFilePath,
+  forEachIconTypeEdgeIncludes,
+  isValidHexColorString,
+} from '../src/helpers'
 import { defaultOutputDirectory, iconTypesAndEdgesMap } from '../src/constants'
 
 jest.mock('fs/promises')
@@ -119,5 +125,42 @@ describe(resolveAndCheckInputFilePath, () => {
     const futureInputFilePath = resolveAndCheckInputFilePath(fakeRelativeInputFilePath)
 
     await expect(futureInputFilePath).rejects.toThrow(new InputFileError('is-a-directory'))
+  })
+})
+
+describe(forEachIconTypeEdgeIncludes, () => {
+  it('should iterate over all icon types and edges', async () => {
+    const uniqueIconTypes = new Set(Object.keys(iconTypesAndEdgesMap) as Array<IconType>)
+    const expectedCalls = Object.values(iconTypesAndEdgesMap).flat().length
+    const spyFn = jest.fn()
+
+    await forEachIconTypeEdgeIncludes(uniqueIconTypes, spyFn)
+    expect(spyFn).toHaveBeenCalledTimes(expectedCalls)
+  })
+})
+
+describe(isValidHexColorString, () => {
+  it('should return true for 6 digits hex color', () => {
+    expect(isValidHexColorString('#000000')).toBeTruthy()
+  })
+
+  it('should return true for 3 digits hex color', () => {
+    expect(isValidHexColorString('#000')).toBeTruthy()
+  })
+
+  it('should return false for HTML color literal', () => {
+    expect(isValidHexColorString('blue')).toBeFalsy()
+  })
+
+  it('should return false for hex color with too much digits', () => {
+    expect(isValidHexColorString('#000000000')).toBeFalsy()
+  })
+
+  it('should return false for hex color with too few digits', () => {
+    expect(isValidHexColorString('#00000')).toBeFalsy()
+  })
+
+  it('should return false if there is no # while rest of the color is valid', () => {
+    expect(isValidHexColorString('000000')).toBeFalsy()
   })
 })

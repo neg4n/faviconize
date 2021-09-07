@@ -1,2 +1,2 @@
-import { faviconize } from './faviconize'
-export { faviconize }
+import { faviconize, generateIconsLinkTags } from './faviconize'
+export { faviconize, generateIconsLinkTags }

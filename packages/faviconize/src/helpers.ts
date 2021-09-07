@@ -45,3 +45,18 @@ export async function resolveAndCheckInputFilePath(inputFilePath: string) {
   }
   return resolvedInputFilePath
 }
+
+export async function forEachIconTypeEdgeIncludes(
+  uniqueOutputTypes: Set<IconType>,
+  fn: (type: IconType, edge: number) => Promise<void> | void,
+) {
+  for (const [type, edges] of Object.entries(iconTypesAndEdgesMap)) {
+    if (uniqueOutputTypes.has(type as IconType)) {
+      await Promise.all(edges.map((edge) => fn(type as IconType, edge)))
+    }
+  }
+}
+
+export function isValidHexColorString(color: string) {
+  return /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/.test(color)
+}
