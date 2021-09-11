@@ -7,6 +7,7 @@ import {
   resolveAndCheckInputFilePath,
   forEachIconTypeEdgeIncludes,
   isValidHexColorString,
+  arrayInsertAt,
 } from './helpers'
 import { IconType } from './types'
 
@@ -23,11 +24,17 @@ export async function faviconize(
 ) {
   const resolvedImageInput = Buffer.isBuffer(imageInput) ? imageInput : await resolveAndCheckInputFilePath(imageInput)
   const normalizedOutputTypes = normalizeOutputTypes(outputIconTypes)
-  const resolvedOutputPath = await resolveAndCreateOrUseOutputPath(outputDirectoryPath)
+  const resolvedOutputDirectoryPath = await resolveAndCreateOrUseOutputPath(outputDirectoryPath)
 
   await forEachIconTypeEdgeIncludes(normalizedOutputTypes, async (type, edge) => {
     const size = [edge, edge]
-    const outputFileAbsolutePath = path.join(resolvedOutputPath, `${type}-${size.join('x')}.png`)
+
+    const outputFileName =
+      type === 'msapplication-square[size]logo'
+        ? `${arrayInsertAt(type.split('[size]'), 1, size.join('x')).join("")}.png`
+        : `${type}-${size.join('x')}.png`
+
+    const outputFileAbsolutePath = path.join(resolvedOutputDirectoryPath, outputFileName)
 
     await sharp(resolvedImageInput)
       .resize(...size)
@@ -54,11 +61,16 @@ export async function generateIconsLinkTags(outputIconTypes?: IconType | Array<I
 
   await forEachIconTypeEdgeIncludes(normalizedOutputTypes, (type, edge) => {
     const size = [edge, edge]
-    const fileName = `${type}-${size.join('x')}.png`
+
+    const fileName =
+      type === 'msapplication-square[size]logo'
+        ? `${arrayInsertAt(type.split('[size]'), 1, size.join('x')).join("")}.png`
+        : `${type}-${size.join('x')}.png`
+
     const filePath = path.join('icons', fileName)
 
-    if (type === 'msapplication-TileImage') {
-      linkTags.push(`<meta name="msapplication-TileImage" content="${filePath}">`)
+    if (type === 'msapplication-square[size]logo') {
+      linkTags.push(`<meta name="msapplication-square${size.join('x')}logo" content="${filePath}">`)
       return
     }
 

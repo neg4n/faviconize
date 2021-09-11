@@ -60,3 +60,7 @@ export async function forEachIconTypeEdgeIncludes(
 export function isValidHexColorString(color: string) {
   return /^#([a-fA-F0-9]{6}|[a-fA-F0-9]{3})$/.test(color)
 }
+
+export function arrayInsertAt<T>(array: Array<T>, index: number, newItem: T) {
+  return [...array.slice(0, index), newItem, ...array.slice(index)]
+}

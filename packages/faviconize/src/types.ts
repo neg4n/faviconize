@@ -1,4 +1,4 @@
-export type IconType = 'icon' | 'msapplication-TileImage' | 'apple-touch-icon'
+export type IconType = 'icon' | 'msapplication-square[size]logo' | 'apple-touch-icon'
 
 export type IconTypeAndEdges = {
   [key in IconType]: number[]
