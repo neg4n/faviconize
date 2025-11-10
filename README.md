@@ -10,8 +10,6 @@ RFG is really good project but sadly it works only online, its [API](https://git
 
 **faviconize** repository contains both CLI application and library source.
 
-## Library &middot; [![version](https://badgen.net/npm/v/faviconize)](https://www.npmjs.com/package/faviconize) [![types](https://badgen.net/npm/types/faviconize)](https://www.npmjs.com/package/faviconize) [![codecov](https://codecov.io/gh/neg4n/faviconize/branch/main/graph/badge.svg?token=NJRF3CG3W0)](https://codecov.io/gh/neg4n/faviconize)
-
 ### Installing
 
 ```shell
