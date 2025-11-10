@@ -34,7 +34,7 @@ async function run() {
 run()
 ```
 
-## CLI &middot; [![version](https://badgen.net/npm/v/faviconize-cli)](https://www.npmjs.com/package/faviconize-cli)
+## CLI
 
 ### Installing
 
